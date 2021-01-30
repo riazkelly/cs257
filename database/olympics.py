@@ -1,3 +1,5 @@
+'''Author: Riaz Kelly'''
+
 import argparse
 import psycopg2
 
