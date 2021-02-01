@@ -18,14 +18,14 @@ def hello():
 
 @app.route('/games')
 def get_actor():
-  try:
-  	cursor = connection.cursor()
-  	games_query = '''SELECT competitions.id, competitions.year, competitions.season, competitions.city
-						 			 	 FROM competitions
-						 			 	 ORDER BY competitions.year
-						 			 	 '''
-		print(cursor.games_query)				 			 	 
-    cursor.execute(games_query)
+    try:
+        cursor = connection.cursor()
+        games_query = '''SELECT competitions.id, competitions.year, competitions.season, competitions.city
+                        FROM competitions
+                        ORDER BY competitions.year
+                    '''
+	    print(cursor.games_query)				 			 	 
+        cursor.execute(games_query)
 	except Exception as e:
 		print(e)
 		exit()
