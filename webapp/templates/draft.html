@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="referrer" content="no-referrer" http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webapp.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='webapp.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title> Draft Simulator</title>
+</head>
+
+<body>
+    <div class="top-title-bar">
+        <div class="user-info">
+            <div class="welcome">
+                Welcome,
+                <br>
+                {{user_first_name}}
+            </div>
+            <a class="logout" href="/logout">Log Out</a>
+        </div>
+        <div class="title-text">
+            FIFA Squad Builder
+        </div>
+    </div>
+    <div class="site-contents">
+        <div class="left-side">
+            <div class="menu-bar">
+                <select onchange="changeTeam(this.value)" id="teamSelector" name="teamSelector">
+                </select>
+                <button onclick="createNewTeam()">Create New Team</button>
+                <label for="formations">Formation For New Team:</label>
+                <select name="formations" id="formations">
+                    <option value="4-3-3">4-3-3</option>
+                    <option value="4-4-2">4-4-2</option>
+                    <option value="4-5-1">4-5-1</option>
+                </select>
+                <div>
+                    <input id="new-team-name" class="team-name" value="New Draft"></input>
+                    <input type="hidden" id=teamId value=""></input>
+                    <button onclick="changeTeamName()">Change Team Name</button>
+                    <button onclick="deleteTeam()">Delete Team</button>
+                </div>
+                <div class="stats">
+                    <div class="team-stat">
+                        <div class="stat-name">Average Rating: </div>
+                        <div id="team-average-rating" class="stat-value">0</div>
+                    </div>
+                    <!-- <div class="team-stat">
+                        <div class="stat-name">Chemistry: </div>
+                        <div class="stat-value">82</div>
+                    </div> -->
+                </div>
+                <a href="/sandbox">Switch To Sandbox Mode</a>
+            </div>
+
+            <div class="player-field">
+                <div position="LW" positionindex=1></div>
+                <div position="ST" positionindex=2></div>
+                <div position="ST" positionindex=3></div>
+                <div position="ST" positionindex=4></div>
+                <div position="RW" positionindex=5></div>
+                <div position="LM" positionindex=6></div>
+                <div position="CM" positionindex=7></div>
+                <div position="CDM" positionindex=8></div>
+                <div position="CM" positionindex=9></div>
+                <div position="RM" positionindex=10></div>
+                <div position="LB" positionindex=11></div>
+                <div position="CB" positionindex=12></div>
+                <div position="CB" positionindex=13></div>
+                <div position="CB" positionindex=14></div>
+                <div position="RB" positionindex=15></div>
+                <div></div>
+                <div></div>
+                <div position="GK" positionindex=17></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="player-info">
+            <div class="category-title">Player Selection</div>
+            <div id="draft-selections" class="player-list-selection">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        <!-- <ul id="players_list"></ul> -->
+        </div>
+    </div>
+</body>
+</html>

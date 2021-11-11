@@ -1,0 +1,420 @@
+/*
+Ethan Ash & Riaz Kelly
+*/
+
+body {
+    margin: 0;
+    min-width: 1285.5px;
+    min-height: 100%;
+    background-color: #0f5135;
+    width: 100%;
+}
+
+.top-title-bar {
+    /*background-color: rgba(158, 155, 155, 0.562);*/
+    background-color: #0c9263;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+}
+
+.welcome-user {
+    margin-bottom: 0.3rem;
+}
+
+.user-info {
+    margin-right: 1rem;
+}
+
+.title-text {
+    font-size: 3rem;
+    color: #deb52c;
+    white-space: nowrap;
+    text-align: center;
+    flex-grow: 2;
+}
+
+.site-contents {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-contents-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    flex-direction: column;
+}
+
+.menu-bar {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    border-style: solid;
+    border-width: thin;
+    padding: 1rem;
+    background-color: #b99d41;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: thin;
+    padding: 0.5rem;
+    background-color: #b99d41;
+    margin-right: -32px;
+}
+
+.player-field {
+    padding: 0.5rem;
+    flex-grow: 2;
+    min-width: 528px;
+    max-width: 528px;
+    background-color: #0f5135;
+}
+
+.player-field > div {
+    float: left;
+    height: 7rem;
+    margin: 1%;
+    width: 16%;
+}
+
+#draft-selections .active-card {
+    cursor:pointer;
+}
+
+.active-card {
+    position: relative;
+    background-image: url(/static/fifa_card_2.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.inactive-card{
+    background-image: url(/static/fifa_card_2.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+
+.inactive-goalie-card{
+    background-image: url(/static/goalie_card.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor:pointer;
+}
+.inactive-goalie-card img {
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 6px;
+    max-width: 55px;
+}
+
+.active-goalie-card{
+    position: relative;
+    background-image: url(/static/goalie_card.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.inactive-card img {
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 6px;
+    max-width: 55px;
+}
+
+.active-card img{
+    position: absolute;
+    max-width: 45px;
+    margin-left: 28px;
+    margin-top: 15px;
+}
+
+/* .active-card:hover img {
+    position: relative;
+    background-color: black;
+} */
+
+.active-goalie-card img{
+    position: absolute;
+    max-width: 45px;
+    margin-left: 26px;
+    margin-top: 13px;
+}
+
+.player-overall-rating {
+    position: absolute;
+    margin-left: 17px;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.player-position {
+    position: absolute;
+    font-size: 10px;
+    margin-left: 17px;
+    margin-top: 33px;
+}
+
+.player-nationality {
+    position: absolute;
+}
+
+.player-club {
+    position: absolute;
+}
+
+.player-name {
+    position: absolute;
+    font-size: 10px;
+    margin-left: 14px;
+    margin-top: 59px;
+    max-width: 57px;
+    width: 57px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.player-pace {
+    position: absolute;
+    margin-top: 73px;
+    margin-left: 16px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.player-shooting {
+    position: absolute;
+    margin-top: 81px;
+    margin-left: 16px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.player-passing {
+    position: absolute;
+    margin-top: 89px;
+    margin-left: 16px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.player-dribbling {
+    position: absolute;
+    margin-top: 73px;
+    margin-left: 47px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.player-defense {
+    position: absolute;
+    margin-top: 81px;
+    margin-left: 47px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.player-physical {
+    position: absolute;
+    margin-top: 89px;
+    margin-left: 47px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.goalie-name {
+    position: absolute;
+    font-size: 10px;
+    margin-left: 12px;
+    margin-top: 57px;
+    max-width: 57px;
+    width: 57px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.goalie-diving {
+    position: absolute;
+    margin-top: 69px;
+    margin-left: 16px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.goalie-handling {
+    position: absolute;
+    margin-top: 76px;
+    margin-left: 16px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.goalie-kicking {
+    position: absolute;
+    margin-top: 83px;
+    margin-left: 16px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.goalie-reflexes {
+    position: absolute;
+    margin-top: 69px;
+    margin-left: 44px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.goalie-speed {
+    position: absolute;
+    margin-top: 76px;
+    margin-left: 44px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.goalie-positioning {
+    position: absolute;
+    margin-top: 83px;
+    margin-left: 44px;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.player-league {
+    position: absolute;
+}
+
+.player-list-selection {
+    margin: 0.5rem;
+    min-width: 317px;
+    max-width: 317px;
+}
+
+.player-list-selection > div {
+    float: left;
+    height: 7rem;
+    margin: 1%;
+    width: 30%;
+}
+
+.logout {
+    text-decoration: none;
+    color: #efdede;
+    border-radius: 7px;
+    border-block-color: black;
+    border-width: 1px;
+    padding: 0.2rem;
+    background: darkred;
+    font-size: 90%;
+}
+
+.welcome {
+    margin-bottom: 0.5rem;
+}
+
+.team-stat {
+    display: flex;
+}
+
+.stats {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#formations {
+    max-width: fit-content;
+    margin-bottom: 2rem;
+}
+
+.left-side {
+    display: flex;
+}
+
+.category-title {
+    font-size: large;
+    padding-bottom: 1rem;
+}
+
+.required-param {
+    color: red;
+    display: none;
+}
+
+.popup{
+    visibility: hidden;
+    width: 120px;
+    height: fit-content;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Positioning */
+    position: absolute;
+    z-index: 1;
+    top: 105%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.active-card:hover .popup {
+    visibility: visible;
+}
+
+.active-goalie-card:hover .popup {
+    visibility: visible;
+}
+
+.popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+
+.popup div{
+    font-size: 12px;
+}
+
+.popupName {
+    font-weight: bold;
+    border-bottom: black;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.popupCountry {
+
+}
+
+.popupLeague {
+
+}
+
+.popupClub {
+    border-bottom: black;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    padding-bottom: 5px;
+}
+
+.stat-box {
+    width: 30px;
+}

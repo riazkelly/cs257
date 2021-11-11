@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webapp.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title>Fifa Draft Simulator</title>
+</head>
+
+<body>
+    <div class="top-title-bar">
+        <div class="title-text">
+            FIFA Squad Builder
+        </div>
+    </div>
+    <div class="site-contents-login">
+        <form id="googleSignInForm" action="/login" method="post">
+            <div class="col s12 m6 offset-m3 center-align">
+                <a class="oauth-container btn darken-4 white black-text" href="#" onclick="document.getElementById('googleSignInForm').submit();" style="text-transform:none">
+                    <div class="left">
+                        <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" 
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                    </div>
+                    Sign in with Google
+                </a>
+            </div>
+        </form> 
+        <a style="color: #ffc600; 
+        background-color: #247653;
+        margin-top: 20px;
+        padding: 4px;
+        border-radius: 5px;" href="/guestlogin">Alternate Login if you don't like google</a>
+    </div>
+</body>
+</html>

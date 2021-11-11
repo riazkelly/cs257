@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="referrer" content="no-referrer" http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webapp.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='webapp.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title> Draft Simulator</title>
+</head>
+
+<body>
+    <div class="top-title-bar">
+        <div class="user-info">
+            <div class="welcome">
+                Welcome,
+                <br>
+                {{user_first_name}}
+            </div>
+            <a class="logout" href="/logout">Log Out</a>
+        </div>
+        <div class="title-text">
+            FIFA Squad Builder
+        </div>
+    </div>
+    <div class="site-contents">
+        <div class="left-side">
+            <div class="menu-bar">
+                <select onchange="changeTeam(this.value)" id="teamSelector" name="teamSelector">
+                </select>
+                <button onclick="createNewTeam()">Create New Team</button>
+                <label for="formations">Formation For New Team:</label>
+                <select name="formations" id="formations">
+                    <option value="4-3-3">4-3-3</option>
+                    <option value="4-4-2">4-4-2</option>
+                    <option value="4-5-1">4-5-1</option>
+                </select>
+                <div>
+                    <input id="new-team-name" class="team-name" value="New Draft"></input>
+                    <input type="hidden" id=teamId value=""></input>
+                    <button onclick="changeTeamName()">Change Team Name</button>
+                    <button onclick="deleteTeam()">Delete Team</button>
+                </div>
+                <div class="stats">
+                    <div class="team-stat">
+                        <div class="stat-name">Average Rating: </div>
+                        <div id="team-average-rating" class="stat-value">0</div>
+                    </div>
+                    <!-- <div class="team-stat">
+                        <div class="stat-name">Chemistry: </div>
+                        <div class="stat-value">82</div>
+                    </div> -->
+                </div>
+                <a href="/draft">Switch To Draft Mode</a>
+            </div>
+
+            <div class="player-field">
+                <div position="LW" positionindex=1></div>
+                <div position="ST" positionindex=2></div>
+                <div position="ST" positionindex=3></div>
+                <div position="ST" positionindex=4></div>
+                <div position="RW" positionindex=5></div>
+                <div position="LM" positionindex=6></div>
+                <div position="CM" positionindex=7></div>
+                <div position="CDM" positionindex=8></div>
+                <div position="CM" positionindex=9></div>
+                <div position="RM" positionindex=10></div>
+                <div position="LB" positionindex=11></div>
+                <div position="CB" positionindex=12></div>
+                <div position="CB" positionindex=13></div>
+                <div position="CB" positionindex=14></div>
+                <div position="RB" positionindex=15></div>
+                <div></div>
+                <div></div>
+                <div position="GK" positionindex=17></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="player-info">
+            <div class="category-title">Player Search</div>
+            <div id="draft-selections" class="">
+                <div class=search-form>
+                    <form onsubmit="playerSearch(event)">
+                        <div class="required-param">You must enter a position</div>
+                        <label for="position">Position:</label><br>
+                        <select onchange="changeFilters(this.value)" id="positionSelector" name="position">
+                        </select><br>
+                        <label for="name">Player Name:</label><br>
+                        <input list="names" type="text" name="name" placeholder="Enter player name..."=""><br>
+                            <datalist id="names"></datalist>
+                        <label for="league">League:</label><br>
+                        <input list="leagues" name="league" type="text" placeholder="Enter league name..."><br>
+                            <datalist id="leagues"></datalist>
+                        <label for="club">Club:</label><br>
+                        <input list="clubs" type="text" name="club" placeholder="Enter club name..."><br>
+                            <datalist id="clubs"></datalist>
+                        <label for="nationality">Nationality:</label><br>
+                        <input list="nationalities" type="text" name="nationality" placeholder="Enter nationality..."><br>
+                            <datalist id="nationalities"></datalist>
+                        <label for="preferredFood">Preferred Foot:</label><br>
+                        <input list="feet" type="text" name="preferredFoot"><br>
+                            <datalist id="feet"></datalist>
+                        <label for="Min Rating">Min Rating:</label>
+                        <input class="stat-box" type=number name="ratingLow" value=0>
+                        <label for="Max Rating">Max Rating:</label>
+                        <input class="stat-box" type=number name="ratingHigh" value=99><br>
+
+                        <label id="minPace" for="Min Pace">Min Pace:</label>
+                        <input class="stat-box" type=number name="firstLow" value=0>
+                        <label id="maxPace" for="Max Pace">Max Pace:</label>
+                        <input class="stat-box" type=number name="firstHigh" value=99><br>
+
+                        <label id="minShooting" for="Min Shooting">Min Shooting:</label>
+                        <input class="stat-box" type=number name="secondLow" value=0>
+                        <label id="maxShooting" for="Max Shooting">Max Shooting:</label>
+                        <input class="stat-box" type=number name="secondHigh" value=99><br>
+
+                        <label id="minPassing" for="Min Passing">Min Passing:</label>
+                        <input class="stat-box" type=number name="thirdLow" value=0>
+                        <label id="maxPassing" for="Max Passing">Max Passing:</label>
+                        <input class="stat-box" type=number name="thirdHigh" value=99><br>
+
+                        <label id="minDribbling" for="Min Dribbling">Min Dribbling:</label>
+                        <input class="stat-box" type=number name="fourthLow" value=0>
+                        <label id="maxDribbling" for="Max Dribbling">Max Dribbling:</label>
+                        <input class="stat-box" type=number name="fourthHigh" value=99><br>
+
+                        <label id="minDefense" for="Min Defense">Min Defense:</label>
+                        <input class="stat-box" type=number name="fifthLow" value=0>
+                        <label id="maxDefense" for="Max Defense">Max Defense:</label>
+                        <input class="stat-box" type=number name="fifthHigh" value=99><br>
+
+                        <label id="minPhysicality" for="Min Physicality">Min Physicality:</label>
+                        <input class="stat-box" type=number name="sixthLow" value=0>
+                        <label id="maxPhysicality" for="Max Physicality">Max Physicality:</label>
+                        <input class="stat-box" type=number name="sixthHigh" value=99><br>
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+                <div id="searched-players" class="player-list-selection">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        <!-- <ul id="players_list"></ul> -->
+        </div>
+    </div>
+</body>
+</html>

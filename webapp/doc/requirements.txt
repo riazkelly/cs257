@@ -1,0 +1,17 @@
+Created by Ethan Ash and Riaz Kelly
+
+This dataset is a complete collection of Fifa (which is a video game representing almost all soccer players in the world) players and each player's respective ratings and statistics. 
+
+https://www.kaggle.com/stefanoleone992/fifa-21-complete-player-dataset?select=players_21.csv
+--by going to this link and scrolling down, you can see the information present in the dataset--
+
+User Stories:
+
+STORY: A soccer fan can pick from randomly selected players and create their own squad of players.
+
+IMPLEMENTATION: We are planning on having a graphic formation of players in rectangles with a position on it and a plus button, and when clicked, it will display 6 players who play in that position on the right side of the screen. The user can then select one of these players that will fill that spot, and contribute to their displayed overall team rating and chemistry on the left side of the screen.
+
+
+STORY: A FIFA gamer can search for / browse for and add any players they want (for example those that they want or own in the FIFA game) to their squad to find out the team chemistry and rating.
+
+IMPLEMENTATION: On the right side of the screen there is a tab where the user can search for and filter by any player they want. There will be both a search bar and filters like position, ranges of rating, team name, league name, country name, club name. From these players, they can click on any of them to add that player to that position in their assigned squad. We are also thinking of implementing a way to delete players that are currently on your squad so that you can replace them with new ones, and we are going to have a way to change the player formation to make sure that you can add any player with any position.
